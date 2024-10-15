@@ -2,10 +2,9 @@ import pandas as pd
 import numpy as np
 import yfinance as yf
 import matplotlib.pyplot as plt
-import random
 import warnings
 warnings.filterwarnings('ignore')
-random.seed(69)
+np.random.seed(69)
 risk_free_rate=.0655
 data = yf.download("BANDHANBNK.NS GILLETTE.NS NCC.NS FORTIS.NS RECLTD.NS DIVISLAB.NS COROMANDEL.NS", period="1y")
 print(f"data: {data}")
