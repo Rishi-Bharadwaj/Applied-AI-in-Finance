@@ -97,7 +97,8 @@ plt.annotate('Minimum Variance',
              xytext=(np.sqrt(min_variance) + 0.01,min_return + 0.01),
              fontsize=10)
 
-y=risk_free_rate+sharpe_ratio*x
+x = np.linspace(0, max(sigma), 100)
+y = risk_free_rate + sharpe_ratio * x
 plt.title("Efficient Frontier and Tangency Portfolio")
 plt.xlabel('Portfolio Risk (Standard Deviation)')
 plt.ylabel('Portfolio Return')
@@ -180,7 +181,8 @@ plt.annotate('Minimum Variance',
              xytext=(np.sqrt(min_variance) + 0.01,min_return + 0.01),
              fontsize=10)
 
-y=risk_free_rate+sharpe_ratio*x
+x = np.linspace(0, max(sigma), 100)
+y = risk_free_rate + sharpe_ratio * x
 plt.title("Efficient Frontier and Tangency Portfolio")
 plt.xlabel('Portfolio Risk (Standard Deviation)')
 plt.ylabel('Portfolio Return')
