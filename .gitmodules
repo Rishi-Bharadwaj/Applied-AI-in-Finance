@@ -1,0 +1,3 @@
+[submodule "Sapm"]
+	path = Sapm
+	url = https://github.com/Rishi-Bharadwaj/Applied-AI-in-Finance.git
