@@ -5,8 +5,8 @@ import matplotlib.pyplot as plt
 import warnings
 warnings.filterwarnings('ignore')
 
-np.random.seed(69)
-risk_free_rate=.0655
+np.random.seed(4)
+risk_free_rate=.0687
 
 tickers = "SPY BTC-USD BANDHANBNK.NS GILLETTE.NS NCC.NS FORTIS.NS RECLTD.NS DIVISLAB.NS COROMANDEL.NS"
 start_date = "2023-01-01"
@@ -27,7 +27,7 @@ print(f"df: \n{df}")
 returns = df.pct_change().dropna()
 returns.columns = returns.columns.get_level_values(1)
 mean_returns = returns.mean()
-annualised_mean_returns=mean_returns*252
+annualised_mean_returns=(1+mean_returns)**252 -1
 print(f"annualised_mean_returns: \n {annualised_mean_returns}")
 
 cov_matrix = returns.cov()
@@ -41,7 +41,7 @@ print(f"standard_deviation: \n {standard_deviation}")
 # Equally Weighted Portfolio
 x=1/7
 weights=np.array([x for i in range(0,7)])
-portfolio_return=np.dot(mean_returns,weights)*252
+portfolio_return=(1+np.dot(mean_returns,weights))**252 -1
 portfolio_variance = np.dot(weights.T, np.dot(cov_matrix, weights))*252
 portfolio_risk=np.sqrt(portfolio_variance)
 
@@ -57,7 +57,7 @@ print(f"Sharpe_ratio: {Sharpe_ratio}")
 def make_random_portfolio(n,returns, covariance_matrix):
     random_weights=np.random.rand(n)
     random_weights=random_weights/np.sum(random_weights)
-    portfolio_return=np.dot(random_weights,returns)*252
+    portfolio_return=(1+np.dot(random_weights,returns))**252 -1
     portfolio_variance=np.dot(random_weights.T,np.dot(covariance_matrix,random_weights))*252
 
     return random_weights,portfolio_return,portfolio_variance
@@ -131,7 +131,7 @@ print(f"df: \n {df}")
 returns = df.pct_change().dropna()
 returns.columns = returns.columns.get_level_values(1)
 mean_returns = returns.mean()
-annualised_mean_returns=mean_returns*252
+annualised_mean_returns=(1+mean_returns)**252 -1
 print(f"annualised_mean_returns: \n {annualised_mean_returns}")
 
 cov_matrix = returns.cov()
@@ -213,7 +213,7 @@ print(f"df: \n{df}")
 returns = df.pct_change().dropna()
 returns.columns = returns.columns.get_level_values(1)
 mean_returns = returns.mean()
-annualised_mean_returns=mean_returns*252
+annualised_mean_returns=(1+mean_returns)**252 -1
 print(f"annualised_mean_returns: \n{annualised_mean_returns}")
 
 cov_matrix = returns.cov()
